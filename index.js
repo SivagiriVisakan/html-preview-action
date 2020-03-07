@@ -6,6 +6,9 @@ async function run() {
         const html_file = core.getInput("html_file");
         const gh_token = core.getInput("gh_token");
 
+        core.debug("html file: "+html_file);
+        core.debug("gh token: "+gh_token);
+        
         const {owner, repo} = context.repo;
 
         const client = new GitHub(gh_token);
