@@ -506,7 +506,7 @@ async function run() {
         await client.issues.createComment({
             owner, repo,
             issue_number: context.payload.pull_request.number,
-            body: `[Preview](https://htmlpreview.github.io/?https://github.com/${owner}/${repo}/blob/${context.ref}/${html_file})`
+            body: `[Preview](https://htmlpreview.github.io/?https://github.com/${owner}/${repo}/blob/${context.sha}/${html_file})`
         });
     } catch (error) {
         core.setFailed(error);
