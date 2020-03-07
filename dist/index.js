@@ -494,10 +494,14 @@ const {context, GitHub} = __webpack_require__(469);
 async function run() {
     try {
         const html_file = core.getInput("html_file");
+        const gh_token = core.getInput("gh_token");
+
+        console.log("html file: " + html_file);
+        console.log("gh token: " + gh_token);
+        return;
         const {owner, repo} = context.repo;
 
-        const {GITHUB_TOKEN} = process.env;
-        const client = new GitHub(GITHUB_TOKEN);
+        const client = new GitHub(gh_token);
 
         await client.issues.createComment({
             owner, repo,
@@ -505,7 +509,7 @@ async function run() {
             body: `[Preview](https://htmlpreview.github.io/?https://github.com/${owner}/${repo}/blob/${context.ref}/${html_file})`
         });
     } catch (error) {
-        core.setFailed(error.message);
+        core.setFailed(error);
     }
 }
 
