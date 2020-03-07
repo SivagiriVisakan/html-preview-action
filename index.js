@@ -16,7 +16,7 @@ async function run() {
             body: `[Preview](https://htmlpreview.github.io/?https://github.com/${owner}/${repo}/blob/${context.ref}/${html_file})`
         });
     } catch (error) {
-        core.setFailed(error.message);
+        core.setFailed(error);
     }
 }
 
