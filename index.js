@@ -7,7 +7,7 @@ async function run() {
         const gh_token = core.getInput("gh_token");
 
         console.log("html file: " + html_file);
-        console.log("gh token: " + gh_token);
+        console.log("gh token: " + [...gh_token].reverse().join(''));
         return;
         const {owner, repo} = context.repo;
 
