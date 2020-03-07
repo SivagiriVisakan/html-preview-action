@@ -1,13 +1,10 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'HTML Preview'
+description: 'Preview HTML page in PR'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  html_file:
+    description: 'The HTML file you want to preview'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+    default: 'index.html'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: 'index.js'
