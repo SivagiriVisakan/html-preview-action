@@ -3,17 +3,17 @@ const {context, GitHub} = require("@actions/github");
 
 async function run() {
     try {
+        const msg = core.getInput("msg");
         const html_file = core.getInput("html_file");
         const gh_token = core.getInput("gh_token");
 
-        const {owner, repo} = context.repo;
-
+        const {sha, repo: {owner, repo}} = context;
         const client = new GitHub(gh_token);
 
         await client.issues.createComment({
             owner, repo,
             issue_number: context.payload.pull_request.number,
-            body: `[Click here to preview HTML page in browser](https://htmlpreview.github.io/?https://github.com/${owner}/${repo}/blob/${context.sha}/${html_file})`
+            body: `[${msg}](https://htmlpreview.github.io/?https://github.com/${owner}/${repo}/blob/${sha}/${html_file})`
         });
     } catch (error) {
         core.setFailed(error);
