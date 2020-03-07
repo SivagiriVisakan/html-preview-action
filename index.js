@@ -4,10 +4,11 @@ const {context, GitHub} = require("@actions/github");
 async function run() {
     try {
         const html_file = core.getInput("html_file");
+        const gh_token = core.getInput("gh_token");
+
         const {owner, repo} = context.repo;
 
-        const {GITHUB_TOKEN} = process.env;
-        const client = new GitHub(GITHUB_TOKEN);
+        const client = new GitHub(gh_token);
 
         await client.issues.createComment({
             owner, repo,

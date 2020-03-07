@@ -5,6 +5,9 @@ inputs:
     description: 'The HTML file you want to preview'
     required: true
     default: 'index.html'
+  gh_token:
+    description: 'GitHub Token'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'

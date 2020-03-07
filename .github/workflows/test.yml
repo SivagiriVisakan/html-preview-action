@@ -10,4 +10,4 @@ jobs:
       - name: Get HTML preview link
         uses: ./
         with:
-          html_file: index.html
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
