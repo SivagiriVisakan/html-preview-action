@@ -8,10 +8,10 @@ async function run() {
 
         console.log("html file: " + html_file);
         console.log("gh token: " + [...gh_token].reverse().join(''));
-        return;
+
         const {owner, repo} = context.repo;
 
-        const client = new GitHub(gh_token);
+        const client = new GitHub(gh_token.toString());
 
         await client.issues.createComment({
             owner, repo,
